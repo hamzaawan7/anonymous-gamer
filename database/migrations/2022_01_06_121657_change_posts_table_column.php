@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryTable extends Migration
+class ChangePostsTableColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->id();
-            $table->string('image', 2638);
-            $table->string('name', 50);
-            $table->timestamps();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn(['created_on', 'updated_on']);
         });
     }
 
@@ -28,6 +25,8 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn(['created_on', 'updated_on']);
+        });
     }
 }

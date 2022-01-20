@@ -22,12 +22,13 @@
 
 </head>
 <body>
-    <div id="app">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+<div id="app">
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
 </body>
 </html>

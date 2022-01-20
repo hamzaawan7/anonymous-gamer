@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Post extends Model
 {
+    use \Conner\Tagging\Taggable;
     use HasFactory;
-    protected $table = 'post';
+    protected $table = 'posts';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -18,6 +20,5 @@ class Post extends Model
         'images',
         'summary',
         'description'
-
     ];
 }

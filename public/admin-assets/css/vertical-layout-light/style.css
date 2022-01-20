@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------
  [Master Stylesheet]
 
-  Project:	Star Admin2 
+  Project:	Star Admin2
   Version:	1.2.1
 -------------------------------------------------------------------*/
 /*-------------------------------------------------------------------
@@ -12762,7 +12762,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 }
 
 .nav-link.disabled {
-  color: #6c757d;
+  color: black;
   pointer-events: none;
   cursor: default;
 }
@@ -29011,7 +29011,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav .nav-item .nav-link .menu-title {
-  color: inherit;
+  color: navajowhite;
   display: inline-block;
   font-size: 12px;
   line-height: 1;
@@ -29040,7 +29040,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav .nav-item.active > .nav-link {
-  background: #fff;
+  background: white;
   position: relative;
   font-weight: bold;
   font-size: 13px;
@@ -29049,7 +29049,7 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item.active > .nav-link i,
 .sidebar .nav .nav-item.active > .nav-link .menu-title,
 .sidebar .nav .nav-item.active > .nav-link .menu-arrow {
-  color: #1F3BB3;
+  color: black;
 }
 
 .sidebar .nav .nav-item.active > .nav-link .menu-title {
@@ -29063,11 +29063,11 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item:hover > .nav-link i,
 .sidebar .nav .nav-item:hover > .nav-link .menu-title,
 .sidebar .nav .nav-item:hover > .nav-link .menu-arrow {
-  color: #1F3BB3;
+  color: black;
 }
 
 .sidebar .nav .nav-item.nav-category {
-  color: #404040;
+  color: #A9A9A9;
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
   margin: 0 30px;
   font-size: 11px;
@@ -29092,7 +29092,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link, .sidebar .nav:not(.sub-menu) > .nav-item:hover[aria-expanded="true"] {
-  background: #fff;
+  background: white;
   color: #fff;
 }
 
@@ -29103,7 +29103,7 @@ div.tagsinput span.tag a {
 .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link[aria-expanded="true"] {
   border-radius: 8px 8px 0 0;
   background: #fff;
-  color: #1F3BB3;
+  color: black;
 }
 
 .sidebar .nav:not(.sub-menu) > .nav-item.active {
@@ -29288,7 +29288,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper {
-  background: #F4F5F7;
+  background: #17181a;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -29299,7 +29299,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar-dark .navbar .navbar-brand-wrapper {
-  background: #232227;
+  background: #232227f;
 }
 
 @media (max-width: 991px) {
@@ -29332,7 +29332,7 @@ div.tagsinput span.tag a {
 
 .navbar .navbar-brand-wrapper .navbar-brand img {
   max-width: 100%;
-  height: 34px;
+  height: 95px;
   margin: auto;
   vertical-align: middle;
 }
@@ -29392,7 +29392,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper {
-  background: #F4F5F7;
+  background: #17181a;
   transition: width 0.25s ease;
   -webkit-transition: width 0.25s ease;
   -moz-transition: width 0.25s ease;
@@ -29715,7 +29715,7 @@ div.tagsinput span.tag a {
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  color: #8D8D8D;
+  color: navajowhite;
   margin-bottom: 0;
 }
 
@@ -29823,7 +29823,7 @@ div.tagsinput span.tag a {
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item .search-form input:focus {
   background-color: transparent;
-  border-bottom: 1px solid #212121;
+  border-bottom: 1px solid red;
   border-radius: 0;
   padding-left: 30px;
   cursor: text;
@@ -31234,7 +31234,7 @@ div.tagsinput span.tag a {
   right: 30px;
   height: 45px;
   width: 45px;
-  background: #1F3BB3;
+  background: grey;
   z-index: 99;
   display: -webkit-flex;
   display: flex;

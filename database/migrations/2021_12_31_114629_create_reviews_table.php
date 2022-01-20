@@ -25,7 +25,7 @@ class CreateReviewsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('post')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

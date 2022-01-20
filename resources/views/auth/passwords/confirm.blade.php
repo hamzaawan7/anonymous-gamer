@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app3')
+
+@section('title')
+    Confirm Password
+@endsection
 
 @section('content')
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">

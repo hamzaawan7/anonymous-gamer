@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -9,7 +9,8 @@
     <div class="box-form" style="padding-right: 100px">
         <div class="left">
             <div class="overlay">
-                <h1><img src="{{asset('images/version/garden-logo2.png')}} " style="padding-top: 5%; padding-bottom: 5%"  alt=""></h1>
+                <h1><img src="{{asset('images/version/garden-logo2.png')}} " style="padding-top: 5%; padding-bottom: 5%"
+                         alt=""></h1>
 
             </div>
         </div>
@@ -23,9 +24,9 @@
                     </button>
                 @endif
 
-                @if (Route::has('register'))
+                @if (Route::has('admin-register'))
                     <button class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link" href="{{ route('admin-register') }}">{{ __('Register') }}</a>
                     </button>
                 @endif
             @else
@@ -47,15 +48,7 @@
                         </form>
                     </div>
                 </li>
-                @endguest
-                </ul>
+            @endguest
         </div>
     </div>
-    </nav>
-
-    <main class="py-4">
-        @yield('content')
-    </main>
-    </div>
-    </body>
-    </html>
+@endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangePostTableColumn extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class ChangePostTableColumn extends Migration
      */
     public function up()
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->dropColumn(['created_on', 'updated_on']);
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('image', 2638);
+            $table->string('name', 50);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class ChangePostTableColumn extends Migration
      */
     public function down()
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->dropColumn(['created_on', 'updated_on']);
-        });
+        Schema::dropIfExists('categories');
     }
 }
