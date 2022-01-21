@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('admin-assets/js/select.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/css/vertical-layout-light/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('admin-assets/images/favicon.png') }}"/>
+    <link rel="stylesheet" href="http://timschlechter.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="trix.css">
     <script type="text/javascript" src="trix.js"></script>
     {{--    <link href="{{ asset('css/create.css') }}" rel="stylesheet">--}}
