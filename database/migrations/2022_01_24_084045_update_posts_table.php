@@ -26,6 +26,6 @@ class UpdatePostsTable extends Migration
      */
     public function down()
     {
-      //
+        $table-> $table->dropColumn('tags');
     }
 }

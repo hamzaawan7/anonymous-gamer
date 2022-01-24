@@ -43,9 +43,9 @@
 
                         <div class="form-group">
                             <label>File upload</label>
-                            <input type="file" name="image" class="file-upload-default" required>
+                            <input type="file" name="image" class="file-upload-default" value="{{ $post->images }}"required>
                             <div class="input-group col-xs-12">
-                                <input type="text" value="{{ $post->images }}" class="form-control file-upload-info"
+                                <input type="text" class="form-control file-upload-info" value="{{ $post->images }}"
                                        disabled placeholder="Upload Image">
                                 <span class="input-group-append">
                            <button class="file-upload-browse btn btn-primary text-white me-0" type="button"

@@ -14,7 +14,8 @@ class AddClicksToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->integer('clicks')->after('description')->default('0');
+            $table->integer('impressions')->after('clicks')->default('0');
         });
     }
 
@@ -26,8 +27,8 @@ class AddClicksToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('clicks')->after('description')->default('0');
-            $table->integer('impressions')->after('clicks')->default('0');
+            $table->dropColumn('clicks');
+            $table->dropColumn('impression');
         });
     }
 }

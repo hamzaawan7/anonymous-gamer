@@ -44,7 +44,6 @@
                         </span>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label>Tags:</label>
                         <input type="text" name="tags[]" class="form-control" data-role="tagsinput">

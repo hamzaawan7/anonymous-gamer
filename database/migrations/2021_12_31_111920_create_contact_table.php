@@ -14,6 +14,7 @@ class CreateContactTable extends Migration
     public function up()
     {
         Schema::create('contact', function (Blueprint $table) {
+
             $table->id();
             $table->string('name');
             $table->string('email');
@@ -21,6 +22,7 @@ class CreateContactTable extends Migration
             $table->string('subject', 255);
             $table->text('Message');
             $table->rememberToken();
+
             $table->timestamps();
         });
     }
