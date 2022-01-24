@@ -55,11 +55,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Summary</label>
-                            <textarea class="form-control" id="summary" name="summary"
-                                      rows="20">{{ $post->summary }}</textarea>
+                            <label>Tags:</label>
+                            <input type="text" value="{{ $post->tags }}" name="tags" class="form-control" data-role="tagsinput">
+
                         </div>
 
+                        <div class="form-group">
+                            <label>Summary</label>
+                            <textarea class="form-control" name="summary" id="summary"
+                                      rows="2">{{ $post->summary }}</textarea>
+                        </div>
                         <div class="form-group">
                             <label>Description</label>
                             <textarea class="form-control" name="description" id="description"
@@ -78,6 +83,8 @@
 
 @endsection
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
     <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description')

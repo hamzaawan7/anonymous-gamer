@@ -34,11 +34,11 @@
                                 <td>{{ $category->name }}</td>
                                 <td>
                                     <a href="{{ route('admin-categories-edit', $category->id) }}"><i
-                                            class="mdi mdi-lead-pencil"></i></a>
+                                            class="mdi mdi-lead-pencil text-black"></i></a>
                                     <a href="{{ route('admin-categories-delete', $category->id) }}"><i
-                                            class="mdi mdi-delete"></i></a>
+                                            class="mdi mdi-delete text-black"></i></a>
                                     <a href="{{ route('admin-categories-show', $category->id) }}"><i
-                                            class="mdi mdi-eye"></i></a>
+                                            class="mdi mdi-eye text-black"></i></a>
                                 </td>
                             </tr>
                         @endforeach
