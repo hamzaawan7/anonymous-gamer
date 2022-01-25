@@ -32,11 +32,11 @@
 
                                 <td>
                                     <a href="{{ route('admin-reviews-edit', $review->id) }}"><i
-                                            class="mdi mdi-lead-pencil"></i></a>
+                                            class="mdi mdi-lead-pencil text-black"></i></a>
                                     <a href="{{ route('admin-reviews-delete', $review->id) }}"><i
-                                            class="mdi mdi-delete"></i></a>
+                                            class="mdi mdi-delete text-black"></i></a>
                                     <a href="{{ route('admin-reviews-show', $review->id) }}"><i
-                                            class="mdi mdi-eye"></i></a>
+                                            class="mdi mdi-eye text-black"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -44,14 +44,17 @@
                         </span>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label>Tags:</label>
-                        <input data-role="tagsinput" type="text" name="tags" class="form-control">
-                        @if ($errors->has('tags'))
-                            <span class="text-danger">{{ $errors->first('tags') }}</span>
-                        @endif
+                        <input type="text" name="tags[]" class="form-control" data-role="tagsinput">
+
                     </div>
+
+                    <div class="form-group">
+                        <label>Summary</label>
+                        <textarea class="form-control" name="summary" id="summary" rows="2"></textarea>
+                    </div>
+
 
                     <div class="form-group">
                         <label>Description</label>
@@ -69,6 +72,8 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
     <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description')

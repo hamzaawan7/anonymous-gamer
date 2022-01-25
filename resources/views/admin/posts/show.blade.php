@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; font-size: large"><b>Post Title:              {{ $post->title }}</b></h4>
 
-                <h5>Post Summary, {{ $post->created_at }} </h5>
+
                 <div><img src="{{ url('images/upload/post/'.$post->images) }}" alt="" title="" height="250" width="250" style="display: block; margin-left: auto; margin-right: auto;"/></div>
                 <p>{{ $post->summary }}</p>
                 <p>{!! $post->description !!}</p>

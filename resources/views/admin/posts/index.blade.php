@@ -34,11 +34,11 @@
                                 <td>{{ $post->title }}</td>
                                 <td>
                                     <a href="{{ route('admin-posts-edit', $post->id) }}"><i
-                                            class="mdi mdi-lead-pencil"></i></a>
+                                            class="mdi mdi-lead-pencil text-black"></i></a>
                                     <a href="{{ route('admin-posts-delete', $post->id) }}"><i
-                                            class="mdi mdi-delete"></i></a>
+                                            class="mdi mdi-delete text-black"></i></a>
                                     <a href="{{ route('admin-posts-show', $post->id) }}"><i
-                                            class="mdi mdi-eye"></i></a>
+                                            class="mdi mdi-eye text-black"></i></a>
                                 </td>
                             </tr>
                         @endforeach

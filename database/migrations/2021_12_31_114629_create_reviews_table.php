@@ -15,13 +15,12 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+
             $table->bigInteger('post_id')->unsigned();
             $table->integer('rating');
             $table->text('Comment');
             $table->string('name');
             $table->string('email');
-
-
 
             $table->timestamps();
 
