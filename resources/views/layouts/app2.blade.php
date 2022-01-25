@@ -15,14 +15,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Site Metas -->
-<title>Forest Time - Stylish Magazine Blog Template</title>
+<title>Anonymous Gamer</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <!-- Site Icons -->
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="{{asset('images/logo.jpg')}}">
 
 <!-- Design fonts -->
 <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">

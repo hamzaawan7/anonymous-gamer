@@ -8,8 +8,8 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('rich_texts', function (Blueprint $table) {
-
             $table->id();
+
             $table->morphs('record');
             $table->string('field');
             $table->longText('body')->nullable();
