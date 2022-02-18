@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
+
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 
 class HomeController extends Controller
 {
     public function home()
     {
-        return view('welcome');
+        $posts = Post::all();
+
+        return view('welcome',['posts'=>$posts]);
+
+
     }
 
     public function __construct()
     {
-        $this->middleware('verified');
+//        $this->middleware('verified');
     }
 
     public function myNotification($type)

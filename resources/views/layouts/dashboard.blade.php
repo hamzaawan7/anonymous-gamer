@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('admin-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/js/select.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/css/vertical-layout-light/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('admin-assets/images/favicon.png') }}"/>
+{{--    <link rel="shortcut icon" href="{{ asset('admin-assets/images/favicon.png') }}"/>--}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet" />
     <style>
         .bootstrap-tagsinput .tag {

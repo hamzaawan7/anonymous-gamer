@@ -25,8 +25,13 @@
                         </div>
                         <div class="form-group">
 
-                            <input type="text" name="category_id" id="category_id" class="form-control"
-                                   value="{{ $post->category_id }}" hidden>
+                            <input type="text" name="type_id" id="type_id" class="form-control"
+                                   value="{{ $post->type }}" hidden>
+                        </div>
+                        <div class="form-group">
+
+                            <input type="text" name="game_id" id="game_id" class="form-control"
+                                   value="{{ $post->game_id }}" hidden>
                         </div>
                         <div class="form-group">
                             <label>Title</label>
@@ -43,7 +48,8 @@
 
                         <div class="form-group">
                             <label>File upload</label>
-                            <input type="file" name="image" class="file-upload-default" value="{{ $post->images }}"required>
+                            <input type="file" name="image" class="file-upload-default" value="{{ $post->images }}"
+                                   required>
                             <div class="input-group col-xs-12">
                                 <input type="text" class="form-control file-upload-info" value="{{ $post->images }}"
                                        disabled placeholder="Upload Image">
@@ -56,7 +62,8 @@
 
                         <div class="form-group">
                             <label>Tags:</label>
-                            <input type="text" value="{{ $post->tags }}" name="tags" class="form-control" data-role="tagsinput">
+                            <input type="text" value="{{ $post->tags }}" name="tags" class="form-control"
+                                   data-role="tagsinput">
 
                         </div>
 
@@ -70,6 +77,7 @@
                             <textarea class="form-control" name="description" id="description"
                                       rows="6">{{ $post->description }}</textarea>
                         </div>
+                        <input type="hidden" name="type" value="{{ $post->type }}"/>
 
                         <button type="submit" class="btn btn-primary text-white me-0"
                                 style="background-color: #303030; color: burlywood;">Submit

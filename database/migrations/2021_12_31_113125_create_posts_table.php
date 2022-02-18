@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
 
             $table->bigInteger('users_id')->unsigned();
-            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('game_id')->unsigned();
             $table->string('title', 255);
             $table->string('images', 2638);
             $table->string('summary', 255);
@@ -28,7 +28,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 
             $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');;
         });
     }
 
