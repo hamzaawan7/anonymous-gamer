@@ -3,18 +3,24 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\SingleController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\E3Controller;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\TeamController;
-use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\GamesController;
+use App\Http\Controllers\Admin\GameRequirementController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Http\Controllers\Admin\CommentsController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\GameRequirementsController;
 use Illuminate\Http\Request;
+
 
 
 /*
@@ -62,21 +68,41 @@ Route::group(array('prefix' => '/admin'), function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('admin-logout');
 
-    Route::get('/category', [CategoriesController::class, 'index'])->name('admin-categories-index');
-    Route::get('/category/create', [CategoriesController::class, 'create'])->name('admin-categories-create');
-    Route::post('/category/store', [CategoriesController::class, 'store'])->name('admin-categories-store');
-    Route:: get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('admin-categories-edit');
-    Route:: post('/category/update', [CategoriesController::class, 'update'])->name('admin-categories-update');
-    Route:: get('/category/show/{id}', [CategoriesController::class, 'show'])->name('admin-categories-show');
-    Route:: get('/category/delete/{id}', [CategoriesController::class, 'delete'])->name('admin-categories-delete');
+    Route::get('/game', [GamesController::class, 'index'])->name('admin-games-index');
+    Route::get('/game/create', [GamesController::class, 'create'])->name('admin-games-create');
+    Route::post('/game/store', [GamesController::class, 'store'])->name('admin-games-store');
+    Route:: get('/game/edit/{id}', [GamesController::class, 'edit'])->name('admin-games-edit');
+    Route:: post('/game/update', [GamesController::class, 'update'])->name('admin-games-update');
+    Route:: get('/game/show/{id}', [GamesController::class, 'show'])->name('admin-games-show');
+    Route:: get('/game/delete/{id}', [GamesController::class, 'delete'])->name('admin-games-delete');
 
-    Route:: get('/post', [PostsController::class, 'index'])->name('admin-posts-index');
-    Route:: get('/post/create', [PostsController::class, 'create'])->name('admin-posts-create');
-    Route:: post('/post/store', [PostsController::class, 'store'])->name('admin-posts-store');
-    Route:: get('/post/edit/{id}', [PostsController::class, 'edit'])->name('admin-posts-edit');
-    Route:: post('/post/update', [PostsController::class, 'update'])->name('admin-posts-update');
-    Route:: get('/post/show/{id}', [PostsController::class, 'show'])->name('admin-posts-show');
-    Route:: get('/post/delete/{id}', [PostsController::class, 'delete'])->name('admin-posts-delete');
+    Route::get('/gamerequirement', [GameRequirementController::class, 'index'])->name('admin-games_required-index');
+    Route::get('/gamerequirement/create', [GameRequirementController::class, 'create'])->name('admin-games_required-create');
+    Route::post('/gamerequirement/store', [GameRequirementController::class, 'store'])->name('admin-games_required-store');
+    Route:: get('/gamerequirement/edit/{game_id}', [GameRequirementController::class, 'edit'])->name('admin-games_required-edit');
+    Route:: post('/gamerequirement/update', [GameRequirementController::class, 'update'])->name('admin-games_required-update');
+    Route:: get('/gamerequirement/show/{game_id}', [GameRequirementController::class, 'show'])->name('admin-games_required-show');
+    Route:: get('/gamerequirement/delete/{game_id}', [GameRequirementController::class, 'delete'])->name('admin-games_required-delete');
+
+    Route::get('/comments', [CommentsController::class, 'index'])->name('admin-comments-index');
+    Route:: post('/comments/create/', [CommentsController::class, 'create'])->name('admin-comments-create');
+    Route:: get('/comments/edit/{comment_id}', [CommentsController::class, 'edit'])->name('admin-comments-edit');
+    Route:: post('/comments/update', [CommentsController::class, 'update'])->name('admin-comments-update');
+    Route:: get('/comments/show/{comment_id}', [CommentsController::class, 'show'])->name('admin-comments-show');
+    Route:: get('/comments/delete/{comment_id}', [CommentsController::class, 'delete'])->name('admin-comments-delete');
+
+    Route::group(array('prefix' => '/post'), function () {
+        Route:: get('/blog', [PostsController::class, 'blogindex'])->name('admin-posts-blogs-index');
+
+        Route:: get('/news', [PostsController::class, 'newsindex'])->name('admin-posts-news-index');
+
+        Route:: post('/update', [PostsController::class, 'update'])->name('admin-posts-update');
+        Route:: post('/store', [PostsController::class, 'store'])->name('admin-posts-store');
+        Route:: get('/create', [PostsController::class, 'create'])->name('admin-posts-create');
+        Route:: get('/post/edit/{id}', [PostsController::class, 'edit'])->name('admin-posts-edit');
+        Route:: get('/post/show/{id}', [PostsController::class, 'show'])->name('admin-posts-show');
+        Route:: get('/post/delete/{id}', [PostsController::class, 'delete'])->name('admin-posts-delete');
+    });
 
     Route:: get('/review', [ReviewsController::class, 'index'])->name('admin-reviews-index');
     Route:: get('/review/edit/{id}', [ReviewsController::class, 'edit'])->name('admin-reviews-edit');
@@ -84,11 +110,26 @@ Route::group(array('prefix' => '/admin'), function () {
     Route:: get('/review/show/{id}', [ReviewsController::class, 'show'])->name('admin-reviews-show');
     Route:: get('/review/delete/{id}', [ReviewsController::class, 'delete'])->name('admin-reviews-delete');
 });
+
+
 Route::get('my-notification/{type}', 'HomeController@myNotification');
+Route:: get('/blogs', [BlogController::class, 'blogs'])->name('blogs');
+Route:: get('/blogs/show/{game}', [BlogController::class, 'show'])->name('blogs-show');
+Route:: get('/blogs/view/{id}', [BlogController::class, 'view'])->name('blogs-view');
+
+Route:: get('/games', [GameController::class, 'games'])->name('games');
+Route:: get('/games/show/{game}', [BlogController::class, 'show'])->name('games-show');
+
+Route:: get('/requirements', [GameRequirementsController::class, 'games_requirement'])->name('requirements');
+Route:: get('/requirements/show/{game}', [GameRequirementsController::class, 'show'])->name('requirements-show');
+
+
+Route:: get('/e3', [E3Controller::class, 'e3'])->name('e3');
+
+Route:: get('/reviews', [ReviewController::class, 'reviews'])->name('reviews');
+Route:: get('/news', [NewsController::class, 'news'])->name('news');
 Route:: get('/contact', [ContactController::class, 'contact'])->name('contact');
-Route:: get('/category', [CategoryController::class, 'category'])->name('category');
-Route:: get('/team', [TeamController::class, 'team'])->name('team');
-Route:: get('/single', [SingleController::class, 'single'])->name('single');
+
 Route:: get('/admin', [AdminController::class, 'admin'])->name('admin');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');

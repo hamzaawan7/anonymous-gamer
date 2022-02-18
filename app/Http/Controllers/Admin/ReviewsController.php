@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Post;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
-
+/**
+ * Class ReviewsController
+ * @package App\Http\Controllers\Admin
+ */
 
 class ReviewsController extends Controller
 {

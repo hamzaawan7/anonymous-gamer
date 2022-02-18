@@ -8,13 +8,13 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Add New Category</h4>
+                <h4 class="card-title">Add New Game</h4>
 
-                <form class="forms-sample" method="POST" action="{{ route('admin-categories-store') }}"
+                <form class="forms-sample" method="POST" action="{{ route('admin-games-store') }}"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Category Name</label>
+                        <label>Game Name</label>
                         <input id="name" type="text" name="name" required class="form-control">
                     </div>
                     `

@@ -1,51 +1,59 @@
-@extends('layouts.dashboard')
+@extends('layouts.userdashboard')
+
+@section('title')
+    Anonymous Gamer
+@endsection
 
 @section('content')
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+    <p style="font-size: 50px; font-family: Brush Script MT, Brush Script Std, cursive; padding-top: 1%;text-align: center">
+        Reviews</p>
 
-    <div class="bg-img">
-        <form action="{{ route('review_store') }}" class="container" method="post" enctype="multipart/form-data">
-            @csrf
+    <hr>
 
-            <h1>Review on Current Post</h1>
-            <div>
-                <label><b>Post Id</b></label>
-                <input id="name" type="text" name="name" required>
+    <div class="demo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="testimonial-slider" class="owl-carousel">
+                        <div class="testimonial">
+                            <span class="icon fa fa-quote-left"></span>
+                            <p class="description">
+                                This Blogs help to increase Information related to new games. This is one of the best
+                                steps to helping Gamers
+                            </p>
+                            <div class="testimonial-content">
+                                <div class="pic"><img src="images/img-1.jpg" alt=""></div>
+                                <h3 class="title">Ahsan</h3>
+                                <span class="post">Pro Gamer</span>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <span class="icon fa fa-quote-left"></span>
+                            <p class="description">
+                                This Helps alot about the features and usage of Games. This is one of the best steps to
+                                helping Gamers </p>
+                            <div class="testimonial-content">
+                                <div class="pic"><img src="images/img-2.jpg" alt=""></div>
+                                <h3 class="title">Hamza Awan</h3>
+                                <span class="post">Pro PUBG Player</span>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <span class="icon fa fa-quote-left"></span>
+                            <p class="description">
+                                This is a best place to get all news about Fifa and all other important events. This is
+                                one of the best steps to helping Gamers </p>
+                            <div class="testimonial-content">
+                                <div class="pic"><img src="images/img-3.jpg" alt=""></div>
+                                <h3 class="title">Sheryar Ali</h3>
+                                <span class="post">Footbal Player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <label><b>Give Rating</b></label>
-            <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5"/>
-                <label for="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4"/>
-                <label for="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3"/>
-                <label for="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2"/>
-                <label for="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1"/>
-                <label for="star1" title="text">1 star</label>
-            </div>
-                <div>
-                    <label><b>Comment</b></label>
-                    <textarea id="summary" name="summary" rows="4" cols="20" required></textarea>7
-                </div>
-
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="name" class="form-control p_input">
-                </div>
-
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control p_input">
-                </div>
-
-                <button type="submit" class="btn">Submit</button>
-        </form>
+        </div>
     </div>
 
-    </body>
+@endsection

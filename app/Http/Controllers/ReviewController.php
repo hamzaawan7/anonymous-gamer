@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+/**
+ * Class NewsController
+ * @package App\Http\Controllers
+ */
 
 class ReviewController extends Controller
 {
-    //
+    public function reviews()
+    {
+        return view('review');
+    }
 }

@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\Category;
-use App\Models\User;
-use http\Env\Request;
+use App\Models\Game;
 
-class CategoryController extends Controller
+/**
+ * Class GameController
+ * @package App\Http\Controllers
+ */
+
+class GameController extends Controller
 {
-    public function categories()
+    public function games()
     {
-        $categories = Category::all();
-        return view('category',['categories'=>$categories] );
+        $games = Game::all();
+        return view('game',['games'=>$games] );
     }
+
 
 
 }

@@ -19,10 +19,10 @@
                       enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="category_id">Games List </label>
-                        <select class="form-control" name="category_id">
+                        <label for="game_id">Games List </label>
+                        <select class="form-control" name="game_id">
                             <option value="">Select Game</option>
-                            @foreach ($categories as $key => $value)
+                            @foreach ($games as $key => $value)
                                 <option value="{{ $value->id }}">
                                     {{ $value->name }}
                                 </option>

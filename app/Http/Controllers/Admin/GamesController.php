@@ -7,20 +7,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 
-use App\Models\Category;
+use App\Models\game;
 
-class CategoriesController extends Controller
+/**
+ * Class GamesController
+ * @package App\Http\Controllers\Admin
+ */
+
+class GamesController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $games = game::all();
 
-        return view('admin.categories.index', ['categories' => $categories]);
+        return view('admin.games.index', ['games' => $games]);
     }
 
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.games.create');
     }
 
     public function store(Request $request)
@@ -30,70 +35,67 @@ class CategoriesController extends Controller
             'name' => 'required'
         ]);
 
-
-
         $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
-        $request->image->move(public_path('images/upload/category'), $newImageName);
+        $request->image->move(public_path('images/upload/game'), $newImageName);
 
-        $categories = Category::create([
+        $games = game::create([
             'image' => $newImageName,
             'name' => $request->input('name')
         ]);
 
         $request->session()->flash('alert-success', 'User was successful added!');
 
-        return view('admin.categories.create', ['categories' => $categories]);
+        return view('admin.games.create', ['games' => $games]);
 
     }
 
     public function edit($id)
     {
-        $category = Category::find($id);
+        $game = game::find($id);
 
-        return view('admin.categories.edit', ['category' => $category]);
+        return view('admin.games.edit', ['game' => $game]);
     }
 
     public function update(Request $request)
     {
         $request->get('old_image');
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'image' => 'required|mimes:jpg,png,jpeg',
             'name' => 'required'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
         }
-        $category = Category::find($request->get('id'));
+        $game = game::find($request->get('id'));
 
-        if(File::exists(public_path('images/upload/category/' . $category->image ))){
-            File::delete(public_path('images/upload/category/'.$category->image ));
+        if (File::exists(public_path('images/upload/game/' . $game->image))) {
+            File::delete(public_path('images/upload/game/' . $game->image));
         }
         $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
-        $request->image->move(public_path('images/upload/category'), $newImageName);
+        $request->image->move(public_path('images/upload/game'), $newImageName);
 
 
+        $game->image = $newImageName;
+        $game->name = $request->get('name');
 
-        $category->image = $newImageName;
-        $category->name = $request->get('name');
 
+        $game->save();
 
-        $category->save();
-
-        return redirect()->route('admin-categories-index');
+        return redirect()->route('admin-games-index');
     }
 
     public function show($id)
     {
-        $category = Category::find($id);
+        $game = game::find($id);
 
-        return view('admin.categories.show', ['category' => $category]);
+        return view('admin.games.show', ['game' => $game]);
     }
 
     public function delete($id)
     {
-        Category::where('id', $id)->firstorfail()->delete();
+        game::where('id', $id)->firstorfail()->delete();
 
-        return redirect('/admin/category');
+        return redirect()->back()->with('success', 'Data has been Deleted Successfully');
     }
 }

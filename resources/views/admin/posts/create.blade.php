@@ -14,11 +14,22 @@
                 <form class="forms-sample" method="POST" action="{{ route('admin-posts-store') }}"
                       enctype="multipart/form-data">
                     @csrf
+
                     <div class="form-group">
-                        <label for="category_id">Category </label>
-                        <select class="form-control" name="category_id">
-                            <option value="">Select Category</option>
-                            @foreach ($categories as $key => $value)
+                        <label for="type_id">Post Type </label>
+                        <select class="form-control" name="type_id">
+                            <option hidden selected>Select Post Type</option>
+                            <option value="1">Blog</option>
+                            <option value="2">News</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="game_id">game </label>
+                        <select class="form-control" name="game_id">
+                            <option value="">Select game</option>
+                            @foreach ($games as $key => $value)
                                 <option value="{{ $value->id }}">
                                     {{ $value->name }}
                                 </option>
@@ -60,6 +71,7 @@
                         <label>Description</label>
                         <textarea class="form-control" name="description" id="description" rows="6"></textarea>
                     </div>
+
 
                     <button type="submit" class="btn btn-primary text-white me-0"
                             style="background-color: #303030; color: burlywood;">Submit

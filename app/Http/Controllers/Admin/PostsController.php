@@ -2,30 +2,41 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Models\Category;
-use App\Models\User;
+use App\Models\game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 
+/**
+ * Class PostsController
+ * @package App\Http\Controllers\Admin
+ */
+
 class PostsController extends Controller
 {
 
-    public function index()
+    public function blogindex()
     {
-        $posts = Post::all();
+        $posts = Post::where('type_id', '1')->get();
+
+
+        return view('admin.posts.index', ['posts' => $posts]);
+    }
+
+    public function newsindex()
+    {
+        $posts = Post::where('type_id', '2')->get();
 
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
     public function create()
     {
-        $categories = Category::all();
+        $games = game::all();
 
-        return view('admin.posts.create', ['categories' => $categories]);
+        return view('admin.posts.create', ['games' => $games]);
     }
 
     public function store(Request $request)
@@ -33,7 +44,8 @@ class PostsController extends Controller
 
 
         $request->validate([
-//            'category_id' => 'required',
+//            'type' => 'required',
+//            'game_id' => 'required',
             'title' => 'required',
             'images' => 'required|mimes:jpg,png,jpeg',
             'tags' => 'required',
@@ -43,16 +55,17 @@ class PostsController extends Controller
         $newImageName = time() . '-' . $request->name . '.' . $request->images->extension();
         $request->images->move(public_path('images/upload/post'), $newImageName);
 
-            Post::create([
-                'users_id' => $request = auth()->user()->id,
-                'category_id' => request('category_id'),
-                'title' => request('title'),
-                'images' => $newImageName,
-                'tags' => implode(request('tags')),
-                'summary' => request('summary'),
-                'description' => request('description'),
-            ]);
-        return redirect()->route('admin-posts-index');
+        Post::create([
+            'users_id' => $request = auth()->user()->id,
+            'type_id' => request('type_id'),
+            'game_id' => request('game_id'),
+            'title' => request('title'),
+            'images' => $newImageName,
+            'tags' => implode(request('tags')),
+            'summary' => request('summary'),
+            'description' => request('description'),
+        ]);
+        return redirect()->route('admin-posts-blogs-index');
     }
 
     public function edit($id)
@@ -77,7 +90,7 @@ class PostsController extends Controller
             return redirect()->back()->withErrors($validator->errors());
         }
         $post = Post::find($request->get('id'));
-        $post->category_id = $request->get('category_id');
+        $post->game_id = $request->get('game_id');
         $post->users_id = $request->get('users_id');
         $post->title = $request->get('title');
         if (File::exists(public_path('images/upload/post/' . $post->images))) {
@@ -93,7 +106,7 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect()->route('admin-posts-index');
+        return redirect()->route('admin-posts-blogs-index');
     }
 
     public function show($id)
@@ -107,6 +120,6 @@ class PostsController extends Controller
     {
         Post::where('id', $id)->firstorfail()->delete();
 
-        return redirect('/admin/post');
+        return redirect()->back()->with('success', 'Data has been Deleted Successfully');
     }
 }

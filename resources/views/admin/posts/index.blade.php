@@ -10,13 +10,20 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center">Posts</h4>
+                @if(session('success'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+
+                    </div>
+                @endif
 
 
-                <div class="table-responsive" id="category">
+                <div class="table-responsive" id="game">
 
                     <div style="display: flex">
                         <a href="{{ route('admin-posts-create') }}">
-                            <input type="button" value="Add New Post" class="btn btn-primary text-white me-0" style="background-color: #303030; color: burlywood;"/>
+                            <input type="button" value="Add New Post" class="btn btn-primary text-white me-0"
+                                   style="background-color: #303030; color: burlywood;"/>
                         </a>&nbsp;
 
                     </div>

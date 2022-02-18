@@ -9,21 +9,21 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Edit Selected Category</h4>
+                <h4 class="card-title">Edit Selected Game</h4>
 
-                <form class="forms-sample" method="post" action="{{ route('admin-categories-update') }}"
+                <form class="forms-sample" method="post" action="{{ route('admin-games-update') }}"
                       enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id" value="{{ $category->id }}"/>
+                    <input type="hidden" name="id" value="{{ $game->id }}"/>
                     <div class="form-group">
-                        <label>Category Name</label>
-                        <input id="name" type="text" name="name" value="{{ $category->name }}" required
+                        <label>Game Name</label>
+                        <input id="name" type="text" name="name" value="{{ $game->name }}" required
                                class="form-control">
                     </div>
 
                     <div class="form-group">
                         <div class="input-group col-xs-12">
-                            <input name="old_image" type="text" value="{{ $category->image }}"
+                            <input name="old_image" type="text" value="{{ $game->image }}"
                                    class="form-control file-upload-info" disabled placeholder="Upload Image" hidden>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <label>File upload</label>
                         <input type="file" name="image" class="file-upload-default" required>
                         <div class="input-group col-xs-12">
-                            <input type="text" value="{{ $category->image }}" class="form-control file-upload-info"
+                            <input type="text" value="{{ $game->image }}" class="form-control file-upload-info"
                                    disabled placeholder="Upload Image">
                             <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary text-white me-0" type="button"

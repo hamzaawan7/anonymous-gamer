@@ -9,14 +9,21 @@
     <div>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title" style="text-align: center">Categories</h4>
+                <h4 class="card-title" style="text-align: center">Games</h4>
+                @if(session('success'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+
+                    </div>
+                @endif
 
 
-                <div class="table-responsive" id="category">
+                <div class="table-responsive" id="game">
 
                     <div style="display: flex">
-                        <a href="{{ route('admin-categories-create') }}">
-                            <input type="button" value="Add New Category" class="btn btn-primary text-white me-0" style="background-color: #303030; color: burlywood;"/>
+                        <a href="{{ route('admin-games-create') }}">
+                            <input type="button" value="Add New Game" class="btn btn-primary text-white me-0"
+                                   style="background-color: #303030; color: burlywood;"/>
                         </a>&nbsp; &nbsp;
 
                     </div>
@@ -29,15 +36,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($games as $game)
                             <tr>
-                                <td>{{ $category->name }}</td>
+                                <td>{{ $game->name }}</td>
                                 <td>
-                                    <a href="{{ route('admin-categories-edit', $category->id) }}"><i
+                                    <a href="{{ route('admin-games-edit', $game->id) }}"><i
                                             class="mdi mdi-lead-pencil text-black"></i></a>
-                                    <a href="{{ route('admin-categories-delete', $category->id) }}"><i
+                                    <a href="{{ route('admin-games-delete', $game->id) }}"><i
                                             class="mdi mdi-delete text-black"></i></a>
-                                    <a href="{{ route('admin-categories-show', $category->id) }}"><i
+                                    <a href="{{ route('admin-games-show', $game->id) }}"><i
                                             class="mdi mdi-eye text-black"></i></a>
                                 </td>
                             </tr>
