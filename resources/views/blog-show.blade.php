@@ -60,51 +60,143 @@
                         <!-- comments section -->
                         <div class="col-md-6 col-md-offset-3 comments-section">
                             <!-- comment form -->
-                            <form class="clearfix" action="{{ route('admin-comments-create') }}" method="post" id="comment_form">
+                            <form class="clearfix" id="comment_form">
                                 @csrf
                                 <h4>Post a comment:</h4>
-                                <textarea name="text" id="text" class="form-control" cols="30" rows="3"></textarea>
+                                <textarea name="text" id="text_area" class="form-control" cols="30" rows="3"></textarea>
                                 <input type="hidden" name="post_id"
-                                       value="{{ $post->id }}"/>
+                                       value="{{ $post->id }}" id="post_id"/>
                                 <input type="hidden" name="type_id"
                                        value="{{ $post->type_id }}"/>
-                                <button class="btn btn-primary btn-sm pull-right" id="submit_comment">Submit comment</button>
+                                <button type="button" id="saveComment" class="btn btn-primary btn-sm pull-right">
+                                    Submit
+                                </button>
                             </form>
-
-{{--                            <h2><span id="comments_count">0</span> Comment(s)</h2>--}}
-                            <hr>
                             <!-- comments wrapper -->
-                            <div id="comments-wrapper">
-                                <div class="comment clearfix">
-                                    <img src="profile.png" alt="" class="profile_pic">
-                                    <div class="comment-details">
-                                        <span class="comment-name">Melvine</span>
-                                        <span class="comment-date">Apr 24, 2018</span>
-                                        <p>This is the first reply to this post on this website.</p>
-                                        <a class="reply-btn" href="#" >reply</a>
-                                    </div>
-                                    <div>
-{{--                                        <!-- reply -->--}}
-{{--                                        <div class="comment reply clearfix">--}}
-{{--                                            <img src="profile.png" alt="" class="profile_pic">--}}
-{{--                                            <div class="comment-details">--}}
-{{--                                                <span class="comment-name">M Talha Javed</span>--}}
-{{--                                                <span class="comment-date">{{$post->comment->created_at}}</span>--}}
-{{--                                                <p>{{$post->comment->text}}</p>--}}
-{{--                                                <a class="reply-btn" href="">reply</a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </div>
+                            <div style="flex: auto">
+                                <div id="comments-wrapper">
+
                                 </div>
                             </div>
+
                         </div>
-                    </div>
-                </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            getComment();
+            $(document).on('click', '#saveComment', function (e) {
+                e.preventDefault(e);
+                const data = $("#comment_form").serialize();
+                const route = '{{route("admin-comments-create")}}';
+
+                // const user_id = $(this).attr("user-id");
+
+                $.ajax({
+                    url: route,
+                    type: "post",
+                    data: data,
+                    headers: {
+                        'X-CSRF-Token': '{{ csrf_token() }}',
+                    },
+                    success: function (response) {
+                        $('#text_area').val('');
+                        getComment();
+                        alert("Comment is saved Successfully")
+
+                    }
+                });
+            });
+
+            function getComment() {
+                const route = '{{route("admin-comments-view")}}';
+                const post_id = $('#post_id').val();
+                $(`#comments-wrapper`).html('');
+
+                $.ajax({
+                    type: "GET",
+                    url: route,
+                    data: {id: post_id},
+                    dataType: "json",
+                    success: function (response) {
+                        $.each(response.data, function (key, data) {
+                            $('#comments-wrapper').append(`<div class="${data.id}"><div class="comment clearfix">` +
+                                `<div class="comment-details" style="padding-top: 10px">` +
+                                `<span class="comment-name" style="font-weight: bold; font-size: large; color: black">Anonymous</span><p style="color: black; font-size: large">` + data.text + `</p>` +
+                                `<button type="button" id="${data.id}" onclick="getReply(this.id)" name="replybutton" class="fa fa-mail-reply">Reply</button>` + `
+                                   <button id="${data.id}" onclick="getAllReply(this.id)" style="float: right" class="fa fa-eye replyShow">Recent Replies</button>` +
+                                `<div id="reply-wrapper` + data.id + `" style="padding-left: 50px">` + `<div id="reply-all-wrapper` + data.id + `">` +
+                                `</div></div><br></div></div>`);
+                        });
+                    }
+
+                });
+
+            }
+
+        });
+
+        function getAllReply(id) {
+
+            const route = '{{route("admin-reply-display")}}';
+            const parent_id = $('#parent_id').val();
+            $(`#reply-all-wrapper` + id).html('');
+
+            $.ajax({
+                type: "GET",
+                url: route,
+                data: {parent_id: id},
+                dataType: "json",
+                success: function (response) {
+                    $.each(response.data, function (key, data) {
+                        $('#reply-all-wrapper' + id).append(`<div class="${data.id}" id="allReply"><div class="comment clearfix">` +
+                            `<div class="comment-details">` +
+                            `<span class="comment-name" style="font-weight: bold">Anonymous</span><p>` + data.text + `</p>` + `</div><br></div></div>`);
+                    });
+                }
+            });
+        }
+
+        function getReply(id) {
+            $('#' + id).replaceWith(`
+                    <div id="reply-box">
+                    <form class="clearfix" id="reply_form">
+                        @csrf
+            <textarea name="text" id="text" class="form-control" cols="30" rows="3"></textarea>
+            <input type="hidden" name="post_id" value="{{ $post->id }}" id="post_id"/>
+                        <input type="hidden" name="type_id" value="{{ $post->type_id }}"/>
+                        <input type="hidden" id="parent_id" name="parent_id" value="${id}"/>
+                        <button type="button" id="saveReply" class="btn btn-primary btn-sm pull-right">
+                            Reply
+                        </button>
+                    </form></div>
+                `)
+        }
+
+        $(document).on('click', '#saveReply', function (e) {
+            e.preventDefault(e);
+            const data = $("#reply_form").serialize();
+            const route = '{{route("admin-reply-create")}}';
+
+            $.ajax({
+                url: route,
+                type: "post",
+                data: data,
+
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}',
+                },
+                success: function (response) {
+                    $('#text').val('');
+                    alert("Reply is saved Successfully")
+                    location.reload()
+                }
+            });
+        });
+    </script>
 
 @endsection
+

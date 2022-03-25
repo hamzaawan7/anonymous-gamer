@@ -85,7 +85,10 @@ Route::group(array('prefix' => '/admin'), function () {
     Route:: get('/gamerequirement/delete/{game_id}', [GameRequirementController::class, 'delete'])->name('admin-games_required-delete');
 
     Route::get('/comments', [CommentsController::class, 'index'])->name('admin-comments-index');
-    Route:: post('/comments/create/', [CommentsController::class, 'create'])->name('admin-comments-create');
+    Route::POST('/comments/create', [CommentsController::class, 'create'])->name('admin-comments-create');
+    Route::POST('/reply/create', [CommentsController::class, 'reply_create'])->name('admin-reply-create');
+    Route::get('/reply/display', [CommentsController::class, 'display'])->name('admin-reply-display');
+    Route::get('/comments/view', [CommentsController::class, 'view'])->name('admin-comments-view');
     Route:: get('/comments/edit/{comment_id}', [CommentsController::class, 'edit'])->name('admin-comments-edit');
     Route:: post('/comments/update', [CommentsController::class, 'update'])->name('admin-comments-update');
     Route:: get('/comments/show/{comment_id}', [CommentsController::class, 'show'])->name('admin-comments-show');
@@ -93,7 +96,6 @@ Route::group(array('prefix' => '/admin'), function () {
 
     Route::group(array('prefix' => '/post'), function () {
         Route:: get('/blog', [PostsController::class, 'blogindex'])->name('admin-posts-blogs-index');
-
         Route:: get('/news', [PostsController::class, 'newsindex'])->name('admin-posts-news-index');
 
         Route:: post('/update', [PostsController::class, 'update'])->name('admin-posts-update');

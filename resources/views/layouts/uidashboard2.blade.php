@@ -24,14 +24,16 @@
 <!-- Bootstrap core CSS -->
 <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"></link>
 <!-- FontAwesome Icons core CSS -->
 <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="{{asset('style.css')}}" rel="stylesheet">
-
+<link rel="stylesheet" href="public/assets/css/reply.css">
 <!-- Responsive styles for this template -->
 <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+
 
 <!-- Colors for this template -->
 <link href="{{asset('css/colors.css')}}" rel="stylesheet">
@@ -42,15 +44,23 @@
 <link href="{{asset('css/version/style.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{asset('js/tether.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('js/review.js')}}"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <![endif]-->
 
 </head>
@@ -118,17 +128,5 @@
     <div class="dmtop">Scroll to Top</div>
 
 </div><!-- end wrapper -->
-
-<!-- Core JavaScript
-================================================== -->
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/tether.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/custom.js')}}"></script>
-<script src="{{asset('js/review.js')}}"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-
 </body>
 </html>

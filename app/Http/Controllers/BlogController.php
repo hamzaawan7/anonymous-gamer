@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\game;
 
@@ -15,8 +16,9 @@ class BlogController extends Controller
     public function blogs()
     {
         $posts = Post::all();
+        $comments = Comment::all();
 
-        return view('blog',['posts'=>$posts]);
+        return view('blog',['posts'=>$posts, 'comments'=>$comments]);
     }
 
     public function show(game $game, Post $post)
@@ -30,8 +32,9 @@ class BlogController extends Controller
     public function view($id)
     {
         $post = Post::find($id);
+        $comments = Comment::all();
 
-        return view('blog-show', ['post'=>$post]);
+        return view('blog-show', ['post'=>$post, 'comments'=>$comments]);
     }
 
 }
